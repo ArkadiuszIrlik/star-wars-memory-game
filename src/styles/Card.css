@@ -1,0 +1,28 @@
+.card-container {
+  background-color: black;
+  height: 400px;
+  width: 300px;
+  border-radius: 30px;
+}
+
+.card-layout {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+}
+
+.card-image-container {
+  height: 100%;
+  padding: 20px;
+  background-color: white;
+}
+
+.card-image {
+  object-fit: contain;
+  object-position: center;
+}
+
+.card-description {
+  text-align: center;
+}
