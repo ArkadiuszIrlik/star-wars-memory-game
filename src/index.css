@@ -27,12 +27,16 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @font-face {
   font-family: 'Star Jedi';
-  src: url('./font/star-jedi-regular.ttf') format('ttf');
+  src: url('./fonts/star-jedi-regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
 }
 
 @font-face {
   font-family: 'Distant Galaxy';
-  src: url('./font/distant-galaxy-regular.ttf') format('ttf');
+  src: url('./fonts/distant-galaxy-regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
 }
 
 body {

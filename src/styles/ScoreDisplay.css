@@ -1,0 +1,10 @@
+.score-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.score-label {
+  font-family: 'Distant Galaxy', sans-serif;
+  font-weight: normal;
+  color: white;
+}
