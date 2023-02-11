@@ -1,0 +1,29 @@
+.ultrawide-container {
+  max-width: 3840px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 2rem 0;
+  max-width: 80%;
+}
+
+.game-title {
+  font-family: 'Star Jedi', sans-serif;
+  text-align: center;
+}
+
+.game-title .main-title {
+  font-size: 2rem;
+  color: #FFE81F;
+}
+
+.game-title .sub-title {
+  font-size: 1.5rem;
+  letter-spacing: 0.07em;
+  color: white;
+}
+
