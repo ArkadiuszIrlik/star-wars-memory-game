@@ -34,3 +34,11 @@ p, h1, h2, h3, h4, h5, h6 {
   font-family: 'Distant Galaxy';
   src: url('./font/distant-galaxy-regular.ttf') format('ttf');
 }
+
+body {
+  background-color: #09090b;
+  background-image: url('./img/background.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
