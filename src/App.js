@@ -1,12 +1,15 @@
 import './App.css';
 import CardGrid from './components/CardGrid';
 import ScoreDisplay from './components/ScoreDisplay';
+import WelcomeModal from './components/WelcomeModal';
+import ModalOverlay from './components/ModalOverlay';
 import { useState, useEffect } from 'react';
 import userEvent from '@testing-library/user-event';
 
 function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [isFirstTime, setIsFirstTime] = useState(true);
 
   function updateHighScore(currentScore) {
     if (currentScore > highScore) {
@@ -28,6 +31,8 @@ function App() {
 
   return (
     <div className='ultrawide-container'>
+      {isFirstTime && (<><ModalOverlay />
+      <WelcomeModal onCloseModal={()=> setIsFirstTime(false)}/></>)}
       <div className='header'>
         <div className='game-title'>
           <h2 className='main-title'>Star Wars</h2>
