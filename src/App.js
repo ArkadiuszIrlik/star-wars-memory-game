@@ -1,11 +1,18 @@
 import './App.css';
 import CardGrid from './components/CardGrid';
 import ScoreDisplay from './components/ScoreDisplay';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import userEvent from '@testing-library/user-event';
 
 function App() {
   const [currentScore, setCurrentScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+
+  function updateHighScore(currentScore) {
+    if (currentScore > highScore) {
+      setHighScore(currentScore);
+    }
+  }
 
   function handleScoreIncrease() {
     setCurrentScore(currentScore + 1);
@@ -15,6 +22,10 @@ function App() {
     setCurrentScore(0);
   }
 
+  useEffect(() => {
+    updateHighScore(currentScore);
+  }, [currentScore])
+
   return (
     <div className='ultrawide-container'>
       <div className='header'>
@@ -22,7 +33,7 @@ function App() {
           <h2 className='main-title'>Star Wars</h2>
           <h3 className='sub-title'>A Memory Game</h3>
         </div>
-        <ScoreDisplay />
+        <ScoreDisplay highScore={highScore} currentScore={currentScore} />
       </div>
       <div className='main'>
         <CardGrid onScoreIncrease={handleScoreIncrease} 
