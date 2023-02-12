@@ -24,7 +24,7 @@ function randomizeArrayOrder(array) {
   return nextArray;
 }
 
-export default function CardGrid() {
+export default function CardGrid({ onScoreIncrease, onWrongGuess }) {
   const characterImages = importAll(require.context('./../img/char/', false, /\.(png|jpe?g|svg)$/));
   const [cards, setCards] = useState([
     {id: crypto.randomUUID, charName: 'Yoda', charImg: characterImages['yoda']},
@@ -40,7 +40,17 @@ export default function CardGrid() {
     {id: crypto.randomUUID, charName: 'Obi Wan Kenobi', charImg: characterImages['obi-wan-kenobi']},
     {id: crypto.randomUUID, charName: 'Lando Calrissian', charImg: characterImages['lando-calrissian']}
   ])
+  const [currentStreakIds, setCurrentStreakIds] = useState([]);
 
+
+  function checkStreakId(id) {
+    if (currentStreakIds.includes(id)) {
+        onWrongGuess();
+    } else {
+      setCurrentStreakIds([...currentStreakIds, id]);
+      onScoreIncrease();
+    }
+  }
 
   return (
     <div className='grid-container'>

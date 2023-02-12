@@ -1,8 +1,20 @@
 import './App.css';
 import CardGrid from './components/CardGrid';
 import ScoreDisplay from './components/ScoreDisplay';
+import { useState } from 'react';
 
 function App() {
+  const [currentScore, setCurrentScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+
+  function handleScoreIncrease() {
+    setCurrentScore(currentScore + 1);
+  }
+
+  function handleWrongGuess() {
+    setCurrentScore(0);
+  }
+
   return (
     <div className='ultrawide-container'>
       <div className='header'>
@@ -13,7 +25,9 @@ function App() {
         <ScoreDisplay />
       </div>
       <div className='main'>
-        <CardGrid />
+        <CardGrid onScoreIncrease={handleScoreIncrease} 
+          onWrongGuess={handleWrongGuess}
+        />
       </div>
     </div>
   );
