@@ -29,7 +29,7 @@ function timeout(ms) {
 }
 
 
-export default function CardGrid({ onScoreIncrease, onWrongGuess }) {
+export default function CardGrid({ onScoreIncrease, onWrongGuess, onWinGame }) {
   const characterImages = importAll(require.context('./../img/char/', false, /\.(png|jpe?g|svg)$/));
   const [cards, setCards] = useState([
     {id: crypto.randomUUID(), charName: 'Yoda', charImg: characterImages['yoda']},
@@ -65,6 +65,11 @@ export default function CardGrid({ onScoreIncrease, onWrongGuess }) {
 
   useEffect(()=> {
     setCards(randomizeArrayOrder(cards));
+    //check win condition
+    if (currentStreakIds.length === cards.length) {
+      onWinGame();
+      setCurrentStreakIds([]);
+    }
   }, [currentStreakIds])
 
   return (
