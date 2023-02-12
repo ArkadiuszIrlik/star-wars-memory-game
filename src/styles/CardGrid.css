@@ -1,7 +1,9 @@
 .grid-container {
-  max-width: 50rem;
+  flex: 1;
+  margin: 0 auto;
+  max-width: 80rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 30px;
+  grid-template-rows: repeat(3, max-content);
+  gap: min(2vh, 30px);
 }

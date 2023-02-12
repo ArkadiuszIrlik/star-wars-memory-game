@@ -1,5 +1,9 @@
 .ultrawide-container {
   max-width: 3840px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .header {
@@ -8,6 +12,7 @@
   align-items: center;
   margin: 0 auto;
   padding: 2rem 0;
+  width: 100%;
   max-width: 80%;
 }
 
@@ -27,3 +32,11 @@
   color: white;
 }
 
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  padding: 1rem 0;
+}

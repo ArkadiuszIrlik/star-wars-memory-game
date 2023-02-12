@@ -1,17 +1,20 @@
 import './../styles/Card.css';
 
-export default function Card({ charImg, charName }) {
+export default function Card({ cardData }) {
   return (
     <div className='card-container'>
       <div className='card-layout'>
         <div className='card-top'></div>
-        <div className='card-middle'>
+        <div className='image' style={{backgroundImage: `url(${cardData.charImg})`}}></div>
+
+        {/* <div className='card-middle'>
           <div className='card-image-container'>
-            <img src={charImg} className='card-image' />
+            <img src={cardData.charImg} className='card-image' draggable='false' />
+            <div className='image' style={{backgroundImage: `url(${cardData.charImg})`, backgroundColor: 'green'}}></div>
           </div>
-        </div>
+        </div> */}
         <div className='card-bottom'>
-          <h2 className='card-description'>{charName}</h2>
+          <h2 className='card-description'>{cardData.charName}</h2>
         </div>
       </div>
     </div>
