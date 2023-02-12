@@ -1,16 +1,31 @@
 import './../styles/CardGrid.css';
 import Card from './Card';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
+//function for importing images in bulk and storing them as an object
 function importAll(r) {
   let images = {};
    r.keys().forEach((item, index) => { images[item.replace(/^(\.\/)([\w-]+)(\.[\w]+)$/, '$2')] = r(item); });
   return images
  }
 
+ function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+}
+
+function randomizeArrayOrder(array) {
+  const arrayCopy = [...array];
+  const nextArray = [];
+  while (arrayCopy.length) {
+    nextArray.push(...arrayCopy.splice(getRandomInt(0, arrayCopy.length), 1))
+  }
+  return nextArray;
+}
+
 export default function CardGrid() {
   const characterImages = importAll(require.context('./../img/char/', false, /\.(png|jpe?g|svg)$/));
-
   const [cards, setCards] = useState([
     {id: crypto.randomUUID, charName: 'Yoda', charImg: characterImages['yoda']},
     {id: crypto.randomUUID, charName: 'Padmé Amidala', charImg: characterImages['padme-amidala']},
@@ -25,10 +40,12 @@ export default function CardGrid() {
     {id: crypto.randomUUID, charName: 'Obi Wan Kenobi', charImg: characterImages['obi-wan-kenobi']},
     {id: crypto.randomUUID, charName: 'Lando Calrissian', charImg: characterImages['lando-calrissian']}
   ])
+
+
   return (
     <div className='grid-container'>
-      {cards.map(card => 
-        <Card cardData={card} />
+      {randomizeArrayOrder(cards).map(card => 
+        <Card cardData={card} key={card.id} />
       )
  }
     </div>
