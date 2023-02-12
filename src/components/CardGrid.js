@@ -63,9 +63,13 @@ export default function CardGrid({ onScoreIncrease, onWrongGuess }) {
     }
   }
 
+  useEffect(()=> {
+    setCards(randomizeArrayOrder(cards));
+  }, [currentStreakIds])
+
   return (
     <div className='grid-container'>
-      {randomizeArrayOrder(cards).map(card => 
+      {cards.map(card => 
         <Card cardData={card} key={card.id} onSelectCard={checkGuess}/>
       )
  }
