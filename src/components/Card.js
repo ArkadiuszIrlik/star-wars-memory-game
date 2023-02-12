@@ -1,8 +1,8 @@
 import './../styles/Card.css';
 
-export default function Card({ cardData }) {
+export default function Card({ cardData, onSelectCard }) {
   return (
-    <div className='card-container'>
+    <div className='card-container' onClick={()=> onSelectCard(cardData.id)}>
       <div className='card-layout'>
         <div className='card-top'></div>
         <div className='image' style={{backgroundImage: `url(${cardData.charImg})`}}></div>
