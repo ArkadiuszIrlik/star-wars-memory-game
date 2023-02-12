@@ -45,6 +45,7 @@ export default function CardGrid({ onScoreIncrease, onWrongGuess }) {
   function checkStreakId(id) {
     if (currentStreakIds.includes(id)) {
         onWrongGuess();
+        setCurrentStreakIds([]);
     } else {
       setCurrentStreakIds([...currentStreakIds, id]);
       onScoreIncrease();
