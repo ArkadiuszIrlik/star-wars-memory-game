@@ -4,6 +4,34 @@
   /* height: 100%;
   height: 25vh; */
   aspect-ratio: 1 / 1.5;
+  cursor: pointer;
+  position: relative;
+}
+
+.animation-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+}
+
+.guess .animation-overlay {
+  animation-name: flash-screen;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+}
+
+.wrong-guess .animation-overlay {
+  background-color: #ca3433;
+}
+
+.right-guess .animation-overlay {
+  background-color: #2e8b57;
+}
+
+@keyframes flash-screen {
+  0% {opacity: 0;}
+  50% {opacity: 0.5;}
+  100% {opacity: 0;}
 }
 
 .card-layout {

@@ -24,6 +24,11 @@ function randomizeArrayOrder(array) {
   return nextArray;
 }
 
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 export default function CardGrid({ onScoreIncrease, onWrongGuess }) {
   const characterImages = importAll(require.context('./../img/char/', false, /\.(png|jpe?g|svg)$/));
   const [cards, setCards] = useState([
@@ -42,11 +47,17 @@ export default function CardGrid({ onScoreIncrease, onWrongGuess }) {
   ])
   const [currentStreakIds, setCurrentStreakIds] = useState([]);
 
-  function checkStreakId(id) {
+  async function checkGuess(id, cardNode) {
     if (currentStreakIds.includes(id)) {
+      cardNode.classList.add('wrong-guess', 'guess');
+      await timeout(300);
+      cardNode.classList.remove('wrong-guess', 'guess');
         onWrongGuess();
         setCurrentStreakIds([]);
     } else {
+      cardNode.classList.add('right-guess', 'guess');
+      await timeout(300);
+      cardNode.classList.remove('right-guess', 'guess');
       setCurrentStreakIds([...currentStreakIds, id]);
       onScoreIncrease();
     }
@@ -55,7 +66,7 @@ export default function CardGrid({ onScoreIncrease, onWrongGuess }) {
   return (
     <div className='grid-container'>
       {randomizeArrayOrder(cards).map(card => 
-        <Card cardData={card} key={card.id} onSelectCard={checkStreakId}/>
+        <Card cardData={card} key={card.id} onSelectCard={checkGuess}/>
       )
  }
     </div>
